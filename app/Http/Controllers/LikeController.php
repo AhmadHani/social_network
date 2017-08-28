@@ -8,6 +8,8 @@ use Session;
 use App\User;
 use App\Post;
 use App\Like;
+use Notification;
+use App\Notifications\LikePost;
 class LikeController extends Controller
 {
     public function like($id){
@@ -16,6 +18,9 @@ class LikeController extends Controller
             'user_id'=>Auth::id(),
             'post_id'=>$post->id
         ]);
+        if($like->post->user_id != Auth::id()){
+            Notification::send(User::find($like->post->user_id),new LikePost(Auth::user()));
+        }
         return Like::find($like->id);
     }
     public function unlike($id){

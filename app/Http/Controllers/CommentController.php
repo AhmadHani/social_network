@@ -5,7 +5,9 @@ use Auth;
 use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
-
+use Notification;
+use App\Notifications\AddComment;
+use App\User;
 class CommentController extends Controller
 {
     public function index($id){
@@ -20,6 +22,9 @@ return Comment::where("post_id",$id)->get();
         'user_id'=>Auth::id(),
         'comment'=>$request->content
         ]);
+        if($comment->post->user_id != Auth::id()){
+        Notification::send(User::find($comment->post->user_id),new AddComment(Auth::user()));
+        }
         return Comment::find($comment->id);
     }
     public function delete($id){
