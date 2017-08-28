@@ -1,15 +1,4 @@
-<?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 <?php
 use App\Status;
 use App\Post;
@@ -51,7 +40,11 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::post("/add_comment","CommentController@create");
     Route::get("/delete_comment/{id}","CommentController@delete");
     Route::post("/edit_comment/{id}","CommentController@edit");
-
-    Route::get("/profile_posts","FeedController@profile_posts");
-    Route::get("/share_post/{id}","ShareController@share");
+    Route::get("/unfriend/{id}","FriendController@unfriend");
+    Route::get("/profile_posts/{id}","FeedController@profile_posts");
+    Route::get("/share/{id}","ShareController@share");
     Route::get('/delete_post/{id}',"FeedController@delete_post");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
