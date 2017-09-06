@@ -52,6 +52,7 @@ class FeedController extends Controller
           if($post != null){
             if($post->comments != null) $post->comments()->forceDelete(); else  return null;
             if($post->likes != null)  $post->likes()->forceDelete(); else return null;
+                        if($post->shares != null) $post->shares()->forceDelete(); else  return null;
             
             $post->delete();
             

@@ -1,5 +1,7 @@
 @extends("layouts.app")
-
+@section("title")
+    Edit {{$user->username}}
+@stop
 @section("content")
 
     <div class="container">

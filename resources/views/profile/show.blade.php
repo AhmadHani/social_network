@@ -1,5 +1,7 @@
 @extends("layouts.app")
-
+@section("title")
+{{$user->username}}'s Profile
+@stop
 @section("content")
 
 <div class="container" style="overflow:auto">
@@ -39,9 +41,19 @@
                     @else
     <span class="label label-info" style="margin-left:10px">Date of birth</span> {{$user->profile->date_birth}}
         @endif
-        </div>
+      
+        </div>  
+        <div style="margin-left:250px;display:inline-block">
+<i  class="fa fa-users fa-2x" aria-hidden="true"></i><br />
+<span>{{count($user->friends())}}</span>
+</div>
+<div style="margin-left:270px;display:inline-block">
+<i  class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i><br />
+<span>{{count($user->posts)}}</span>
+</div>
 
         </div>
+        
     </div>
     
 

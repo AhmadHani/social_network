@@ -6,12 +6,16 @@
 
 
         export const store = new Vuex.Store({
-
+  
                 state:{
                     nots:[],
                     posts:[],
                     auth_user:{},
-                    profile_posts:[]
+                    profile_posts:[],
+                    users_admin:[],
+                    posts_admin:[],
+                    comments:[],
+                    likes:[]
                         
                 },
                 getters:{
@@ -27,7 +31,19 @@
                     },
                         all_profile_posts(state){
                                 return state.profile_posts;
-                        }
+                        },
+                            all_users(state){
+                                return state.users_admin;
+                            },
+                            all_posts_admin(state){
+                                return state.posts_admin;
+                            },
+                            all_comments(state){
+                                return state.comments;
+                            },
+                            all_likes(state){
+                                return state.likes;
+                            }
                 },
                 mutations:{
                     add_not(state,not){
@@ -158,7 +174,47 @@
                         var index = state.posts.indexOf(post)
                         state.posts.splice(index,1);
                     }
-                    }
+                    },
+                add_user(state,user){
+                    state.users_admin.push(user);
+                },
+                delete_user(state,user){
+                    var user = state.users_admin.find((resp)=>{
+                        return resp.id == user.id;
+                    })
+                    var index = state.users_admin.indexOf(user);
+                state.users_admin.splice(index,1);
+                },
+            get_posts(state,post){
+                state.posts_admin.push(post);
+            },
+            delete_post(state,post){
+                var post = state.posts_admin.find((resp)=>{
+                    return resp.id == post.id;
+                })
+                var index = state.posts_admin.indexOf(post);
+                state.posts_admin.splice(index,1);
+            },
+            get_comments(state,comment){
+                state.comments.push(comment);
+            },
+            delete_comment2(state,comment){
+                var comment = state.comments.find((resp)=>{
+                    return resp.id == comment.id
+                })
+                var index = state.comments.indexOf(comment);
+                state.comments.splice(index,1);
+            },
+            get_likes(state,like){
+                state.likes.push(like)
+            },
+            delete_like2(state,like){
+                var like = state.likes.find((resp)=>{
+                    resp.id == like.id
+                })
+                var index = state.likes.indexOf(like);
+                state.likes.splice(index,1);
+            }
                 }
 
         });

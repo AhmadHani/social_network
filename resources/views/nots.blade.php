@@ -1,5 +1,7 @@
 @extends("layouts.app")
-
+@section("title")
+    Your Notifications
+@stop
 @section("content")
 
 

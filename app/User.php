@@ -9,13 +9,13 @@ class User extends Authenticatable
 {
     use Friendable;
     use Notifiable;
-public $with = ['shares'];    /**
+public $with = ['shares','profile'];    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','avatar','gender'
+        'name', 'email', 'password','username','avatar','gender','access'
     ];
 
     /**
@@ -52,4 +52,5 @@ public $with = ['shares'];    /**
     public function shares(){
         return $this->hasMany("App\Share");
     }
+    
 }

@@ -45,6 +45,31 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::get("/share/{id}","ShareController@share");
     Route::get('/delete_post/{id}',"FeedController@delete_post");
 
-Auth::routes();
+// admin area
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::group(['middleware'=>"admin"],function(){
+
+
+    Route::get("/admin","AdminController@index")->name("index");
+    Route::get("/admin/users","AdminController@users")->name("users");
+    Route::get("/admin/get_users","AdminController@get_users")->name("get_users");
+    Route::get("/admin/delete_user/{id}","AdminController@delete_user")->name("delete_user");
+    Route::get("/admin/posts","AdminController@posts")->name("posts");
+    Route::get("/admin/get_posts","AdminController@get_posts")->name("get_posts");
+
+    Route::get("/admin/delete_post/{id}","AdminController@delete_post")->name("delete_post");
+    Route::get("/admin/comments","AdminController@comments")->name("comments");
+    Route::get("/admin/get_comments","AdminController@get_comments")->name("get_comments");
+    Route::get("/admin/delete_comment/{id}","AdminController@delete_comment")->name("delete_comment");
+    Route::get("/admin/likes","AdminController@likes")->name("likes");
+    Route::get("/admin/get_likes","AdminController@get_likes")->name("get_likes");
+    Route::get("/admin/delete_like/{id}","AdminController@delete_like")->name("delete_like");
+    Route::get("/admin/edit/{type}/{id}","AdminController@edit");
+     Route::post("/admin/update/{type}/{id}","AdminController@update")->name("admin_update");
+    Route::get("/admin/add/{type}","AdminController@add")->name("add");
+    Route::post("/admin/store/{type}","AdminController@store")->name("store");
+    Route::get("/admin/settings",'AdminController@settings')->name("settings");
+    Route::post("/admin/settings",'AdminController@update_settings');
+    
+    });
+    

@@ -22,6 +22,10 @@ Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('unread', require('./components/UnreadNots.vue'));
 Vue.component('post', require('./components/Post.vue'));
 Vue.component('feed', require('./components/Feed.vue'));
+Vue.component('users', require('./components/admin/Users.vue'));
+Vue.component('posts', require('./components/admin/Posts.vue'));
+Vue.component('comments', require('./components/admin/Comments.vue'));
+Vue.component('likes', require('./components/admin/Likes.vue'));
 
 import {store} from "./store"
 

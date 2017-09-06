@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -5,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta name="description" content="{{\App\Setting::find(1)->description}}">
+  <meta name="keywords" content="{{\App\Setting::find(1)->keys}}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -22,7 +25,10 @@
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,700,300'>
 </head>
 <body>
+@if(\App\Setting::find(1)->status == 1)
 
+@include("lock")
+@else
     <div id="app">
     @if(Auth::check()) <init></init> @endif 
 
@@ -40,7 +46,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Social Network
+                        {{\App\Setting::find(1)->name}}
                     </a>
                 </div>
 
@@ -101,7 +107,7 @@
             <source src="{{asset('audio/notify.wav')}}">
     </audio>
     </div>
-
+@endif
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('lib/noty.js')}}" type="text/javascript"></script>
