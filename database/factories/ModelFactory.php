@@ -22,3 +22,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Setting::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => 'Social Network',
+        'email' => 's@s.com',
+        'description' => 'Simple social network',
+        'keys'=>"humans,social,communicate",
+        'status'=>0
+    ];
+});
+
