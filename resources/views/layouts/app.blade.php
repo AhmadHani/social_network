@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="{{\App\Setting::find(1)->description}}">
-  <meta name="keywords" content="{{\App\Setting::find(1)->keys}}">
+  <meta name="description" content="{{\App\Setting::first()->get()->description or 'description'}}">
+  <meta name="keywords" content="{{\App\Setting::first()->get()->keys or 'humans,social'}}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -25,7 +25,7 @@
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,700,300'>
 </head>
 <body>
-@if(\App\Setting::find(1)->status == 1)
+@if(\App\Setting::first()->get()->status == 1)
 
 @include("lock")
 @else
@@ -46,7 +46,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{\App\Setting::find(1)->name}}
+                        {{\App\Setting::first()->get()->name}}
                     </a>
                 </div>
 
