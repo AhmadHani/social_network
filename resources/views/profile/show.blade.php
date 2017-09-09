@@ -57,7 +57,7 @@
     </div>
     
 
-@if(Auth::user()->name == $user->name)
+@if(Auth::check()&&Auth::user()->name == $user->name)
     <post :giveprofile="true"></post>
 @endif
     

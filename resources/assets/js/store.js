@@ -162,10 +162,9 @@
                         var post = state.profile_posts.find((resp)=>{
                             return resp.id == payload.post_id
                         }) 
-                        var index = state.profile_posts.indexOf(post)
+                        var index = state.profile_posts.indexOf(post);
                         state.profile_posts.splice(index,1);
-       
-                        }else{
+                                                }else{
 
                         
                         var post = state.posts.find((resp)=>{
@@ -188,7 +187,7 @@
             get_posts(state,post){
                 state.posts_admin.push(post);
             },
-            delete_post(state,post){
+            delete_post2(state,post){
                 var post = state.posts_admin.find((resp)=>{
                     return resp.id == post.id;
                 })

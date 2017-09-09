@@ -30,8 +30,8 @@
  <hr style="margin-top: 0px; " />
 
             <like :if_profile="ifprofile" style="height: 0px; position:relative" :id="post.id"></like>
-         <button class="btn btn-info btn-xs pull-left" style="margin-left:5px" @click="share_post(post)">Share</button>
-
+       <!-- <button class="btn btn-info btn-xs pull-left" style="margin-left:5px" @click="share_post(post)">Share</button>
+-->
     <comment  :id="post.id" :if_profile="ifprofile"></comment>
 
                 </div>
@@ -54,7 +54,6 @@ export default {
     mounted(){
         this.get_feed()
         this.profile_posts()
-    
     },
   
     data(){
@@ -92,7 +91,6 @@ export default {
             post_id:post.id,
             ifprofile:this.giveprofile
         });
-    
 new Noty({
                     'text':"post deleted !",
                     'type':"error",
@@ -101,9 +99,10 @@ new Noty({
 
     })
   },
+  /*
   share_post(post){
       axios.get("/share/"+post.id).then((resp)=>{
-          console.log(resp.data);
+          
           this.$store.commit("add_profile_posts",resp.data)
       new Noty({
                     'text':"share succuss!",
@@ -113,7 +112,7 @@ new Noty({
 
       })
         }
-
+*/
 },
 computed:{
     

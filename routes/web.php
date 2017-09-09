@@ -42,7 +42,7 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::post("/edit_comment/{id}","CommentController@edit");
     Route::get("/unfriend/{id}","FriendController@unfriend");
     Route::get("/profile_posts/{id}","FeedController@profile_posts");
-    Route::get("/share/{id}","ShareController@share");
+    //Route::get("/share/{id}","ShareController@share");
     Route::get('/delete_post/{id}',"FeedController@delete_post");
 
 // admin area

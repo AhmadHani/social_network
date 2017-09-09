@@ -1,5 +1,6 @@
-<?php
 
+<?php
+/*
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
@@ -26,3 +27,4 @@ if($share->post->user_id != Auth::id()){
 
     }
 }
+*/
