@@ -142,12 +142,18 @@ class AdminController extends Controller
         
         }
         if($type== "user"){
+           
             $this->validate($request, [
-            'password' => 'required|string|min:6|confirmed',
+           
             'gender'=>"required|bool",
         ]);
-
             $user = User::find($id);
+           
+    if(!empty($request->password)){
+        $this->validate($request,[
+             'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
             if($request->email != $user->email){
                 $this->validate($request,[
                           'email' => 'required|string|email|max:255|unique:users',
@@ -164,16 +170,22 @@ class AdminController extends Controller
 
                 ]);
             }
-
             $user->update([
                 'name'=>$request->name,
                 'username'=>$request->username,
                 'email'=>$request->email,
                 'gender'=>$request->gender,
-                'password'=>bcrypt($request->password),
+                
                 'access'=>$request->access
 
             ]);
+            if(!empty($request->password)){
+
+            $user->update([
+                'password'=>bcrybt($request->password)
+
+            ]);
+            }
             if($request->hasFile("avatar")){
             $user->update([
                 'avatar'=>$request->avatar->store('/public/avatars')
